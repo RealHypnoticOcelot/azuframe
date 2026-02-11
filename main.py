@@ -60,7 +60,7 @@ async def help(ctx: commands.Context):
 @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
 @app_commands.rename(episodeindex="episode", frameindex="frame")
 async def azuframe(ctx: commands.Context, episodeindex: typing.Optional[int] = None, frameindex: typing.Optional[int] = None):
-    folder = Path("my/path/here") # Replace this with the path to your Azumanga frames
+    folder = Path("azuframes") # Replace this with the path to your Azumanga frames
 
     episodelist = list(folder.iterdir())
     episodelist.sort()
@@ -94,8 +94,6 @@ async def azuframe(ctx: commands.Context, episodeindex: typing.Optional[int] = N
 \u001b[0;37m[\u001b[0;35m{"█" * percent}\u001b[0;31m{"░" * (10 - percent)}\u001b[0;37m]
 ```""")
         file = discord.File(frame, filename=f"frame_{frameindex}.png")
-        if random.randint(1, 100) == 1:
-            embed.description = embed.description + "\n\n-# [ This bot will be shut down within the next month, in light of the new Discord policies regarding biometric authentication. The code has been made available on [GitHub](<https://github.com/RealHypnoticOcelot/jarvis/>). ]"
         embed.set_image(url=f"attachment://frame_{frameindex}.png")
         await ctx.reply(file=file, embed=embed, mention_author=False)
 
