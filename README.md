@@ -1,5 +1,5 @@
-# Jarvis
-###### Jarvis, become a Discord bot
+# Azuframes
+###### Discord bot that outputs a random Azumanga Daioh frame
 
 ## How to use:
 
