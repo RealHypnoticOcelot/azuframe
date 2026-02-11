@@ -31,6 +31,7 @@ Navigate to one of the directories where the frames outputted to(you have to nav
 montage $(shuf -e *.png) -geometry +0+0 tiles.png && convert tiles.png -resize 10% resized_tiles.png
 ```
 
+### Running the program
 Then, run the program! You might have to tweak some paths if they're not what's expected.
 ```python
 python3 main.py
