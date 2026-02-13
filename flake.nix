@@ -10,11 +10,14 @@
   in
   {
     devShells.${system}.default = pkgs.mkShell {
-      packages = [
-        (pkgs.python3.withPackages (python-pkgs: with python-pkgs; [
-          git+https://github.com/Rapptz/discord.py
-          ffmpeg
+      packages = with pkgs; [
+        (python3.withPackages (python-pkgs: with python-pkgs; [
+          discordpy
+          ffmpeg-python
+          wand
         ]))
+        ffmpeg
+        imagemagick
       ];
     };
   };

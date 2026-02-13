@@ -7,6 +7,8 @@ from pathlib import Path
 import random
 from io import BytesIO
 
+# This module will change the bot's profile picture to a random frame every day at the specified time.
+
 class azupfpchange(commands.Cog):
     def __init__(self, bot):
         self.bot = bot # adding a bot attribute for easier access
@@ -17,7 +19,7 @@ class azupfpchange(commands.Cog):
 
     @tasks.loop(time=datetime.time(hour=00, minute=00, tzinfo=datetime.timezone.utc)) # utc, midnight
     async def azupfp(self):
-        folder = Path("opt/discordbots/daiohframes")
+        folder = Path("daiohframes")
     
         episodelist = list(folder.iterdir())
         episode = random.choice(episodelist)

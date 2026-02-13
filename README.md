@@ -8,33 +8,45 @@ Navigate to the directory the script was downloaded in, and run the following co
 ```python
 python3 -m venv env && source env/bin/activate
 ```
-### (Required Steps)
+### (Install Dependencies)
 Install the dependencies required with the following command:
 
 ```python
 pip3 install -r requirements.txt
 ```
 
-Extract the frames from your Azumanga Daioh videos.
-```python
-python3 frameextract.py
-```
-This command isn't well-tested, and probably won't work out of the box! It's a throwaway script I made ages ago.
+Install ffmpeg at [ffmpeg.org](https://www.ffmpeg.org/download.html), if you don't have it already.
+If you're on MacOS and have `brew` installed, you can just run `brew install ffmpeg`.
 
+If you want to generate a banner, you'll need to install imagemagick at [imagemagick.org](https://imagemagick.org/script/download.php).
+If you're on MacOS and have `brew` installed, you can just run `brew install imagemagick`.
+
+**For Nix users:**
+Simply navigate to the application, run `nix develop`, and use the commands below!
+
+### Usage
+
+Extract the frames from your videos.
+```python
+python3 extract_frames.py /path/to/yourvideos
+```
+This script expects to be fed a folder containing all of your selected videos.
+By default, it assumes all videos are in .mkv format.
+Its options are tuned for Azumanga Daioh, so if you plan on doing something else, you might have to modify it.
 
 ### (Optional: Create a banner for the bot)
 Create a banner for your Azumanga Daioh bot.
-First, install imagemagick at [imagemagick.org](https://imagemagick.org/script/download.php).
-If you're on MacOS and have brew installed, you can just run `brew install imagemagick`.
-Navigate to one of the directories where the frames outputted to(you have to navigate to a specific episode), and run this command!
+```python
+python3 generate_banner.py /path/to/frames
 ```
-montage $(shuf -e *.png) -geometry +0+0 tiles.png && convert tiles.png -resize 10% resized_tiles.png
-```
+This script expects to be fed the folder(called by default "daiohframes") containing the folders with your video frames.
+It picks out 5,000 images(or less, if you didn't supply that many) and turns them into a montage.
 
 ### Running the program
-Then, run the program! You might have to tweak some paths if they're not what's expected.
+Then, run the program!
 ```python
 python3 main.py
 ```
+You might have to tweak some paths if you change them.
 
 ###### If you have any issues, questions, concerns or suggestions, create an issue or pull request

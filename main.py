@@ -12,7 +12,7 @@ intents.message_content = True
 bot = commands.Bot(command_prefix="az!", intents=intents, status=discord.Status.online, activity=discord.Game(name="az!help"), help_command=None)
 api_keys = {
     "owner_id": 000000000000000000, # Replace this with your user ID
-    "bot_token": "XXYYzZ" # Replace this with your bot token
+    "bot_token": "TokenHere" # Replace this with your bot token
 }
 
 @bot.event
@@ -60,7 +60,7 @@ async def help(ctx: commands.Context):
 @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
 @app_commands.rename(episodeindex="episode", frameindex="frame")
 async def azuframe(ctx: commands.Context, episodeindex: typing.Optional[int] = None, frameindex: typing.Optional[int] = None):
-    folder = Path("azuframes") # Replace this with the path to your Azumanga frames
+    folder = Path("daiohframes") # Replace this with the path to your Azumanga frames
 
     episodelist = list(folder.iterdir())
     episodelist.sort()
