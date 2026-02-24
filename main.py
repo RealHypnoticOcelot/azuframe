@@ -96,15 +96,9 @@ async def azuframe(ctx: commands.Context, episodeindex: typing.Optional[int] = N
         file = discord.File(frame, filename=f"frame_{frameindex}.png")
         embed.set_image(url=f"attachment://frame_{frameindex}.png")
         await ctx.reply(file=file, embed=embed, mention_author=False)
-
-# Check for the delete command
-def indms_or_hasperms(ctx: commands.Context):
-    if isinstance(ctx.channel, discord.channel.DMChannel):
-        return True
-    return ctx.channel.permissions_for(ctx.message.author).manage_messages
     
 @bot.hybrid_command(name="delete", description="Delete Azuframe messages!")
-@commands.check(indms_or_hasperms)
+@commands.check_any(commands.has_permissions(manage_messages=True), commands.dm_only())
 async def delete(ctx: commands.Context, count: int):
     await ctx.reply(f"Deleting {count} messages!", mention_author=False, ephemeral=True)
     messages = []
